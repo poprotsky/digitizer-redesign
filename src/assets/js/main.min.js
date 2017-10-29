@@ -10,6 +10,12 @@ $(document).ready(function(){
         $('html').toggleClass('is-menu-open');
     });
 
+    // search
+    $('.search').on('click', function(){
+        $(this).addClass('is-search-active');
+        $(this).find('input').focus();
+    });
+
     // body events
     $('body').on('click touchend', function(e){
         // dropdowns
@@ -21,6 +27,12 @@ $(document).ready(function(){
           if(!$(e.target).closest('.header__top').length) {
             $('html').removeClass('is-menu-open');
           }
+        }
+        // search
+        if(!$(e.target).closest('.search').length) {
+            if($('.search input').val().length == 0) {
+                $('.search').removeClass('is-search-active');
+            }
         }
     });
 });

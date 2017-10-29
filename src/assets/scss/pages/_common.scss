@@ -13,6 +13,8 @@
     opacity: 0;
     visibility: hidden;
     transform: translateY(10px);
+    max-height: 250px;
+    overflow-y: auto;
     @include transition();
     .is-dropdown-open & {
         opacity: 1;
@@ -34,17 +36,189 @@
     &--right {
         left: initial;
         right: 0;
-        @include max-screen($md-max) {
-            bottom: calc(0 + 30px);
-            top: initial;
-            left:0;
-            right: initial;
-        }
     }
 }
 
 .container {
     @include max-screen($md-max) {
         width: 100%;
+    }
+}
+
+.main {
+    padding: 60px 0 100px;
+}
+
+.bar {
+    @extend .flex, .flex--nowrap, .flex--center-y, .flex--space-between;
+    @include max-screen($xs-max) {
+        display: none;
+    }
+    &__left {
+        @extend .flex, .flex--nowrap, .flex--center-y;
+        @include max-screen($xs-max) {
+            flex-flow: column wrap;
+            align-items: flex-start;
+        }
+    }
+    &__right {
+        @extend .flex, .flex--nowrap, .flex--center-y;
+        .has-dropdown {
+            margin-left: 40px;
+            > a {
+                @extend .flex, .flex--center-y;
+                position: relative;
+                @include hover() {
+                    color: $key-color-1;
+                    &::before {
+                        border-color: $key-color-1 transparent transparent transparent;
+                    }
+                    > span {
+                        color: $key-color-1;
+                    }
+                }
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    right:0;
+                    width: 0;
+                    height: 0;
+                    border-style: solid;
+                    border-width: 5px 3.5px 0 3.5px;
+                    border-color: $default-font-color transparent transparent transparent;
+                    transform: translateY(-60%);
+                    @include transition();
+                }
+                > span {
+                    margin-left: 10px;
+                    padding-right: 17px; 
+                    font-size: 12px;
+                    font-weight: 600;
+                    color: $default-font-color;
+                    text-transform: uppercase;
+                    @include transition();
+                }
+            }
+        }
+        .dropdown {
+            width: 300px;
+            li {
+                @extend .flex, .flex--nowrap;
+                font-size: 14px;
+                cursor: pointer;
+                @include transition();
+                @include hover() {
+                    color: $key-color-1;
+                }
+                > .ico {
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+    &__list {
+        @extend .flex, .flex--nowrap, .flex--center-y;
+        li {
+            @extend .flex, .flex--center-y;
+            margin-left: 30px;
+            @include max-screen($xs-max) {
+                &:first-child {
+                    margin-left: 0;
+                }
+            }
+            &.is-active {
+                a {
+                    color: $key-color-1;
+                }
+            }
+            a {
+                @extend .flex, .flex--inline, .flex--center-y; 
+                font-size: 12px;
+                font-weight: 600;
+                text-transform: uppercase;
+                color: rgba($default-font-color, .5);
+                > .ico {
+                    font-size: 16px;
+                    margin-right: 10px;
+                    transform: translateY(-2px);
+                }
+                @include hover() {
+                    color: $key-color-1;
+                }
+            }
+        }
+    }
+}
+
+.search {
+    @extend .flex, .flex--nowrap, .flex--center-y;
+    position: relative;
+    width: 44px;
+    height: 44px;
+    background-color: #fff;
+    border: 1px solid $gray;
+    border-radius: 50px;
+    overflow: hidden;
+    padding: 0;
+    cursor: pointer;
+    @include transition();
+    @include max-screen($xs-max) {
+        margin-bottom: 30px;
+    }
+    @include hover() {
+        border-color: $key-color-1;
+        > .ico {
+            color: $key-color-1;
+        }
+    }
+    &.is-search-active {
+        width: 250px;
+        cursor: default;
+        border-color: $key-color-1;
+        > .ico {
+            color: $key-color-1;
+        }
+        input {
+            opacity: 1;
+            margin-left: 35px;
+            visibility: visible;
+            padding-right: 15px;
+        }
+    }
+    > .ico {
+        position: absolute;
+        font-size: 16px;
+        color: rgba($key-color-2, .5);
+        top: 50%;
+        left: 13px;
+        transform: translateY(-50%);
+        @include transition();
+    }
+    input {
+        opacity: 0;
+        visibility: hidden;
+        margin-left: 15px;
+        width:100%;
+        @include transition();
+    }
+}
+
+.bookmark {
+    font-size: 16px;
+    &--red {
+        color: $color-danger;
+    }
+    &--orange {
+        color: $color-warning;
+    }
+    &--turcus {
+        color: $color-success;
+    }
+    &--violet {
+        color: $color-advanced;
+    }
+    &--cyan {
+        color: $color-info;
     }
 }

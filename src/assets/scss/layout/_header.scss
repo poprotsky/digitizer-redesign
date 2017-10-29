@@ -138,6 +138,14 @@
 			}
 		}
 	}
+	.dropdown--right {
+		@include max-screen($md-max) {
+            bottom: calc(0 + 30px);
+            top: initial;
+            left:0;
+            right: initial;
+        }
+	}
 	// bottom part
 	&__bottom {
 		@extend .flex, .flex--space-between, .flex--nowrap, .flex--end-y;
