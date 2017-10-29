@@ -1,17 +1,17 @@
-$pagination-margin: $default-margin;
+$pagination-margin: 30px 0 0;
 $pagination-color: $heading-color;
 $pagination-font-family: $default-font-family;
-$pagination-font-size: 13px;
-$pagination-font-weight: 700;
+$pagination-font-size: 14px;
+$pagination-font-weight: 600;
 
-$pagination-list-item-margin: 0 4px;
-$pagination-list-item-width: 46px;
-$pagination-list-item-height: 46px;
-$pagination-list-item-radius: $default-radius;
-$pagination-list-item-color: $heading-color;
-$pagination-list-item-background-color: transparent;
-$pagination-list-item-border: 2px solid $default-font-color;
-$pagination-list-item-font-weight: 700;
+$pagination-list-item-margin: 0 5px;
+$pagination-list-item-width: 44px;
+$pagination-list-item-height: 44px;
+$pagination-list-item-radius: 50px;
+$pagination-list-item-color: rgba($key-color-2, .5);
+$pagination-list-item-background-color: #fff;
+$pagination-list-item-border: 2px solid $gray;
+$pagination-list-item-font-weight: 600;
 
 $pagination-list-item-color-hover: #fff;
 $pagination-list-item-background-color-hover: $key-color-1;
@@ -23,7 +23,7 @@ $pagination-list-item-border-active: $pagination-list-item-border-hover;
 
 $pagination-list-item-opacity-disabled: .3;
 
-$pagination-list-item-next-prev-font-size: 10px;
+$pagination-list-item-next-prev-font-size: 15px;
 
 
 .pagination {
@@ -63,7 +63,7 @@ $pagination-list-item-next-prev-font-size: 10px;
             a,
             span,
 			em {
-                @extend .flex, .flex--center-x, .flex--center-y;
+                @extend .flex, .flex--center;
                 width: $pagination-list-item-width;
                 height: $pagination-list-item-height;
 				color: $pagination-list-item-color;
@@ -121,7 +121,7 @@ $pagination-list-item-next-prev-font-size: 10px;
                 @include transition(right);
             }
             &::after {
-                content: '\e902';
+                content: '\e900';
                 font-family: $default-font-family-icon;
                 position: absolute;
                 right:-20px;
@@ -153,7 +153,7 @@ $pagination-list-item-next-prev-font-size: 10px;
                 @include transition(left);
             }
             &::after {
-                content: '\e903';
+                content: '\e901';
                 font-family: $default-font-family-icon;
                 position: absolute;
                 left:-20px;
@@ -183,84 +183,5 @@ $pagination-list-item-next-prev-font-size: 10px;
                 }
             }
         }
-    }
-}
-
-// pagination arrows
-.pagination-arrows-container {
-    padding: 40px;
-    background-color: $default-font-color;
-    > .pagination-arrows__title {
-        display: block;
-        margin-bottom: 30px;
-        margin-top: 0;
-        @include max-screen($xs-max) {
-            text-align: center;
-        }
-    }
-}
-.pagination-arrows {
-    @extend .flex, .flex--space-between;
-    > li {
-        @extend .flex;
-        flex: 0 0 50%;
-        &:last-child {
-            @extend .flex--end-x;
-            @include max-screen($xs-max) {
-                margin-bottom: 0;
-            }
-        }
-        @include max-screen($xs-max) {
-            flex: 0 0 100%;
-            justify-content: center !important;
-            margin-bottom: 50px;
-        }
-    }
-    &__item {
-        @extend .flex, .flex--inline, .flex--column;
-        @include max-screen($xs-max) {
-            text-align: center !important;
-            align-items: center;
-        }
-        &-prev {
-            text-align: left;
-        }
-        &-next {
-            @extend .flex--end-y;
-            text-align: right;
-        }
-        @include hover() {
-            .pagination-arrows__title {
-                opacity: .5;
-            }
-            .btn {
-                color: $key-color-1;
-                .ico {
-                    &[class*="left"] {
-                        transform: translateX(-5px);
-                    }
-                    &[class*="right"] {
-                        transform: translateX(5px);
-                    }
-                }
-            }
-        }
-    }
-    &__label {
-
-    }
-    &__title {
-        font-family: $default-font-family;
-        color: $heading-color;
-        line-height: 1.5;
-        font-weight: 700;
-        font-size: 18px;
-        margin-top: 12px;
-        @include transition();
-    }
-    .btn {
-        color: rgba($heading-color, .3);
-        letter-spacing: 1px;
-        font-weight: 600;
     }
 }

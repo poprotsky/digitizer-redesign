@@ -1,0 +1,102 @@
+.bar {
+    @extend .flex, .flex--nowrap, .flex--center-y, .flex--space-between;
+    margin-bottom: 30px;
+    @include max-screen($xs-max) {
+        display: none;
+    }
+    &__left {
+        @extend .flex, .flex--nowrap, .flex--center-y;
+        @include max-screen($xs-max) {
+            flex-flow: column wrap;
+            align-items: flex-start;
+        }
+    }
+    &__right {
+        @extend .flex, .flex--nowrap, .flex--center-y;
+        .has-dropdown {
+            margin-left: 40px;
+            > a {
+                @extend .flex, .flex--center-y;
+                position: relative;
+                @include hover() {
+                    color: $key-color-1;
+                    &::before {
+                        border-color: $key-color-1 transparent transparent transparent;
+                    }
+                    > span {
+                        color: $key-color-1;
+                    }
+                }
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    right:0;
+                    width: 0;
+                    height: 0;
+                    border-style: solid;
+                    border-width: 5px 3.5px 0 3.5px;
+                    border-color: $default-font-color transparent transparent transparent;
+                    transform: translateY(-60%);
+                    @include transition();
+                }
+                > span {
+                    margin-left: 10px;
+                    padding-right: 17px; 
+                    font-size: 12px;
+                    font-weight: 600;
+                    color: $default-font-color;
+                    text-transform: uppercase;
+                    @include transition();
+                }
+            }
+        }
+        .dropdown {
+            width: 300px;
+            li {
+                @extend .flex, .flex--nowrap;
+                font-size: 14px;
+                cursor: pointer;
+                @include transition();
+                @include hover() {
+                    color: $key-color-1;
+                }
+                > .ico {
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+    &__list {
+        @extend .flex, .flex--nowrap, .flex--center-y;
+        li {
+            @extend .flex, .flex--center-y;
+            margin-left: 30px;
+            @include max-screen($xs-max) {
+                &:first-child {
+                    margin-left: 0;
+                }
+            }
+            &.is-active {
+                a {
+                    color: $key-color-1;
+                }
+            }
+            a {
+                @extend .flex, .flex--inline, .flex--center-y; 
+                font-size: 12px;
+                font-weight: 600;
+                text-transform: uppercase;
+                color: rgba($default-font-color, .5);
+                > .ico {
+                    font-size: 16px;
+                    margin-right: 10px;
+                    transform: translateY(-2px);
+                }
+                @include hover() {
+                    color: $key-color-1;
+                }
+            }
+        }
+    }
+}
