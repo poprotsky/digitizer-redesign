@@ -1,6 +1,35 @@
 .btn {
-    
+    @extend .flex, .flex--inline, .flex--center-y;
+    padding: 15px 20px 13px;
+    font-size: 12px;
+    border-radius: 50px;
+    border: 2px solid transparent;
+    background-color: $key-color-1;
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 1;
+    @include transition();
+    .ico {
+        @extend .flex, .flex--inline;
+        margin-right: 10px;
+        transform: translateY(-1px);
+        @include transition(transform);
+    }
+    &__text {
+        line-height: 1;
+    }
+    @include hover() {
+        color: #fff;
+        box-shadow: $default-box-shadow;
+        background-color: lighten($key-color-1, 5%);
+        .ico {
+            transform: translateY(-1px) rotate(90deg);
+        }
+    }
     &--outline {
-
+        background-color: transparent;
+        border: 2px solid $key-color-1;
+        color: $key-color-1;
     }
 }

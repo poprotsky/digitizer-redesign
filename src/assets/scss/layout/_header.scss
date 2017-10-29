@@ -1,4 +1,116 @@
 .header {
+	background-color: $key-color-2;
+	// general
+	&__logo {
+		color: $key-color-1;
+		font-size: 20px;
+		font-weight: 600;
+	}
+	&__title {
+		display: block;
+		font-size: 30px;
+		font-weight: 300;
+		color: #fff;
+		margin-bottom: 8px;
+	}
+	&__subtitle {
+		display: block;
+		font-size: 13px;
+		font-weight: 400;
+		color: $default-font-color;
+	}
+	// top part
+	&__top {
+		@extend .flex, .flex--nowrap, .flex--center-y;
+		padding: 30px 0;
+		&-navs {
+			@extend .flex, .flex--nowrap, .flex--center-y, .flex--space-between;
+			flex: 1;
+		}
+		&-right {
 
+		}
+	}
+	// nav
+	&__nav {
+		@extend .flex, .flex--nowrap, .flex--center-y;
+		&-item {
+			@extend .flex;
+			margin-left: 40px;
+			font-size: 12px;
+			font-weight: 600;
+			color: $default-font-color;
+			text-transform: uppercase;
+			line-height: 1;
+			a {
+				@extend .flex, .flex--inline, .flex--center-y, .flex--nowrap;
+				font-size: inherit;
+				font-weight: inherit;
+				color: inherit;
+				text-transform: inherit;
+				.ico {
+					color: $key-color-1;
+					font-size: 18px;
+					margin-right: 10px;
+					transform: translateY(-2px);
+					@include transition();
+				}
+			}
+			&.has-dropdown {
+				> a {
+					position: relative;
+					padding-right: 17px;
+					&::before {
+						content: '';
+						position: absolute;
+						top: 50%;
+						right:0;
+						width: 0;
+						height: 0;
+						border-style: solid;
+						border-width: 5px 3.5px 0 3.5px;
+						border-color: $default-font-color transparent transparent transparent;
+						transform: translateY(-60%);
+						@include transition();
+					}
+				}
+			}
+			@include hover() {
+				> a {
+					color: #fff;
+					&::before {
+						border-color: #fff transparent transparent transparent;
+					}
+					.ico {
+						color: #fff;
+						transform: translateY(-2px) rotate(10deg);
+					}
+				}
+			}
+			&.is-active {
+				> a {
+					color: #fff;
+					&::before {
+						border-color: #fff transparent transparent transparent;
+					}
+				}
+			}
+			&.is-dropdown-open > a {
+				color: #fff;
+				&::before {
+					border-color: #fff transparent transparent transparent;
+				}
+			}
+		}
+	}
+	// bottom part
+	&__bottom {
+		@extend .flex, .flex--space-between, .flex--nowrap, .flex--end-y;
+		&-inner {
+			padding: 25px 0;
+		}
+		.btn {
+			transform: translateY(50%);
+		}
+	}
 }
-

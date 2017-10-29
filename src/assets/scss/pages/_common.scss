@@ -1,0 +1,38 @@
+.has-dropdown {
+    position: relative;
+}
+
+.dropdown {
+    position: absolute;
+    top:calc(100% + 15px);
+    left:0;
+    background-color: #fff;
+    box-shadow: $default-box-shadow;
+    padding: 30px;
+    width: 200px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    @include transition();
+    .is-dropdown-open & {
+        opacity: 1;
+        visibility: visible;
+        z-index: 99;
+        transform: translateY(0);
+    }
+    li {
+        margin-bottom: 10px;
+        @include hover() {
+            a {
+                color: $key-color-1;
+            }
+        }
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+    &--right {
+        left: initial;
+        right: 0;
+    }
+}
