@@ -1,0 +1,61 @@
+// 
+// DEFAULT ICONS
+// 
+
+@font-face {
+  font-family: $default-font-family-icon;
+  src:
+    url('../fonts/ico.ttf') format('truetype'),
+    url('../fonts/ico.woff') format('woff'),
+    url('../fonts/ico.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.ico {
+  font-family: $default-font-family-icon !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ico-arrow-left:before {
+  content: "\e900";
+}
+.ico-arrow-right:before {
+  content: "\e901";
+}
+.ico-bookmark-symbol:before {
+  content: "\e902";
+}
+.ico-bookmark:before {
+  content: "\e903";
+}
+.ico-cross:before {
+  content: "\e904";
+}
+.ico-pencil:before {
+  content: "\e905";
+}
+.ico-plus:before {
+  content: "\e906";
+}
+.ico-search:before {
+  content: "\e907";
+}
+.ico-star:before {
+  content: "\e908";
+}
+.ico-user:before {
+  content: "\e909";
+}
+.ico-users:before {
+  content: "\e90a";
+}
